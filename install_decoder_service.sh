@@ -44,6 +44,7 @@ LOG_FILE="/var/log/mqtt_decoder_service.log"
 
 start() {
     echo "Starting MQTT Decoder Service..."
+    sleep 10  # Ajoute un délai pour s'assurer que le système est prêt
     export PYTHONPATH=/root/decoder_service/decoders
     python3 $SCRIPT_PATH > $LOG_FILE 2>&1 &
 }
