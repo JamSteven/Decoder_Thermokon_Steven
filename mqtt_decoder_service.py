@@ -1,9 +1,17 @@
 import os
 import sys
-sys.path.append('/root/decoder_service/decoders')  # Ajoutez le chemin avant les autres imports
+
+# Ajoutez le chemin avant les imports
+sys.path.append('/root/decoder_service/decoders')
+
+print(f"Current working directory: {os.getcwd()}")
+print(f"Python path: {os.environ.get('PYTHONPATH')}")
+print(f"Files in /root/decoder_service/decoders: {os.listdir('/root/decoder_service/decoders')}")
+
 import paho.mqtt.client as mqtt
 import json
-from thermokon_decoder import Decode  # Import sans "decoders" car sys.
+from thermokon_decoder import Decode  # Import direct après ajout au chemin
+
 # Configuration
 BROKER = "127.0.0.1"  # Adresse du broker MQTT
 PORT = 1883  # Port par défaut
@@ -44,7 +52,7 @@ def main():
     """Point d'entrée principal du script."""
     # Vérification des dépendances nécessaires
     try:
-        if not os.path.exists("decoders/thermokon_decoder.py"):
+        if not os.path.exists("/root/decoder_service/decoders/thermokon_decoder.py"):
             raise FileNotFoundError("Decoder file not found in the expected directory.")
     except FileNotFoundError as fnfe:
         print(f"[ERROR] {fnfe}")
