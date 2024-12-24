@@ -1,4 +1,5 @@
 import os
+import sys
 import paho.mqtt.client as mqtt
 import json
 from decoders.thermokon_decoder import Decode  # Assurez-vous que le chemin est correct après décompression
