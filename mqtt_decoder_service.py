@@ -1,9 +1,9 @@
 import os
 import sys
+sys.path.append('/root/decoder_service/decoders')  # Ajoutez le chemin avant les autres imports
 import paho.mqtt.client as mqtt
 import json
-from decoders.thermokon_decoder import Decode  # Assurez-vous que le chemin est correct après décompression
-sys.path.append('/root/decoder_service/decoders')
+from thermokon_decoder import Decode  # Import sans "decoders" car sys.
 # Configuration
 BROKER = "127.0.0.1"  # Adresse du broker MQTT
 PORT = 1883  # Port par défaut
